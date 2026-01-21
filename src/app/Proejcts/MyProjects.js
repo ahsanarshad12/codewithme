@@ -1,9 +1,13 @@
 // app/projects/page.jsx
 'use client';
 
-import React from 'react';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 
 export default function ProjectsPage() {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, amount: 0.2 });
+
     const projects = [
         {
             id: 1,
@@ -48,10 +52,21 @@ export default function ProjectsPage() {
     ];
 
     return (
-        <div className="min-h-screen  py-16 px-4 sm:px-6 lg:px-8">
+        <motion.div
+            ref={ref}
+            className="min-h-screen py-16 px-4 sm:px-6 lg:px-8"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 0.8 }}
+        >
             <div className="2xl:w-250 mx-auto">
                 {/* Portfolio Badge */}
-                <div className="mb-8">
+                <motion.div
+                    className="mb-8"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
+                    transition={{ duration: 0.6 }}
+                >
                     <button className="flex items-center gap-2 px-4 py-2 border border-gray-600 rounded-full text-white text-xs uppercase tracking-wider hover:border-gray-500 transition-colors">
                         <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                             <rect x="3" y="3" width="7" height="7" />
@@ -61,18 +76,28 @@ export default function ProjectsPage() {
                         </svg>
                         PORTFOLIO
                     </button>
-                </div>
+                </motion.div>
 
                 {/* Header */}
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-12">
+                <motion.h1
+                    className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-12"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                >
                     <span className="text-white">Featured </span>
                     <span className="text-emerald-400">Projects</span>
-                </h1>
+                </motion.h1>
 
                 {/* Projects Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     {/* Project 1 - Full Width */}
-                    <div className=" w-80 lg:w-full lg:col-span-2 group cursor-pointer">
+                    <motion.div
+                        className="w-80 lg:w-full lg:col-span-2 group cursor-pointer"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                        transition={{ duration: 0.6, delay: 0.3 }}
+                    >
                         <div className="relative overflow-hidden rounded-2xl bg-gray-800 aspect-video hover:scale-[1.02] transition-transform duration-300">
                             <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent"></div>
 
@@ -93,10 +118,15 @@ export default function ProjectsPage() {
                                 </h3>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Project 2 - Half Width */}
-                    <div className=" w-80 lg:w-full group cursor-pointer">
+                    <motion.div
+                        className="w-80 lg:w-full group cursor-pointer"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                        transition={{ duration: 0.6, delay: 0.4 }}
+                    >
                         <div className="relative overflow-hidden rounded-2xl bg-gray-700 aspect-4/5 hover:scale-[1.02] transition-transform duration-300">
                             <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent"></div>
 
@@ -114,10 +144,15 @@ export default function ProjectsPage() {
                                 </h3>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Project 3 - Half Width */}
-                    <div className=" w-80 lg:w-full group cursor-pointer">
+                    <motion.div
+                        className="w-80 lg:w-full group cursor-pointer"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                        transition={{ duration: 0.6, delay: 0.5 }}
+                    >
                         <div className="relative overflow-hidden rounded-2xl bg-yellow-300 aspect-4/5 hover:scale-[1.02] transition-transform duration-300">
                             <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent"></div>
 
@@ -135,10 +170,15 @@ export default function ProjectsPage() {
                                 </h3>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Project 4 - Full Width */}
-                    <div className=" w-80 lg:w-full lg:col-span-2 group cursor-pointer">
+                    <motion.div
+                        className="w-80 lg:w-full lg:col-span-2 group cursor-pointer"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                        transition={{ duration: 0.6, delay: 0.6 }}
+                    >
                         <div className="relative overflow-hidden rounded-2xl bg-gray-700 aspect-video hover:scale-[1.02] transition-transform duration-300">
                             <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent"></div>
 
@@ -156,10 +196,15 @@ export default function ProjectsPage() {
                                 </h3>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Project 5 - Full Width */}
-                    <div className=" w-80 lg:w-full lg:col-span-2 group cursor-pointer">
+                    <motion.div
+                        className="w-80 lg:w-full lg:col-span-2 group cursor-pointer"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                        transition={{ duration: 0.6, delay: 0.7 }}
+                    >
                         <div className="relative overflow-hidden rounded-2xl bg-gray-300 aspect-video hover:scale-[1.02] transition-transform duration-300">
                             <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent"></div>
 
@@ -176,9 +221,9 @@ export default function ProjectsPage() {
                                 </h3>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 }

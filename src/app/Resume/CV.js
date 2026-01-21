@@ -1,10 +1,39 @@
-import react from 'react';
-
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 
 export default function CV() {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, amount: 0.2 });
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.15,
+                delayChildren: 0.1
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, x: -20 },
+        visible: {
+            opacity: 1,
+            x: 0,
+            transition: { duration: 0.6, ease: "easeOut" }
+        }
+    };
+
     return (
-        <section className=" text-white ">
-            <div className="mb-4">
+        <motion.section
+            ref={ref}
+            className="text-white w-full"
+            variants={containerVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+        >
+            <motion.div className="mb-4" variants={itemVariants}>
                 <button className="flex items-center gap-2 px-4 py-2 border border-gray-600 rounded-full text-white text-xs uppercase tracking-wider hover:border-gray-500 transition-colors">
                     <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <rect x="3" y="3" width="7" height="7" />
@@ -14,11 +43,14 @@ export default function CV() {
                     </svg>
                     RESUME
                 </button>
-            </div>
+            </motion.div>
             {/* Title */}
-            <h2 className="text-3xl md:text-7xl font-semibold mb-14">
+            <motion.h2
+                className="text-3xl md:text-7xl font-semibold mb-14"
+                variants={itemVariants}
+            >
                 Education & <span className="text-emerald-400">Experience</span>
-            </h2>
+            </motion.h2>
 
             {/* Timeline */}
             <div className="relative pl-8">
@@ -27,7 +59,7 @@ export default function CV() {
                 <div className="absolute left-1.5 top-0 h-full w-0.5 bg-[#2a2a2a]" />
 
                 {/* Item 1 */}
-                <div className="relative flex gap-8 mb-16">
+                <motion.div className="relative flex gap-8 mb-16" variants={itemVariants}>
                     <span className="absolute -left-7.5 top-0 w-3 h-3 rounded-full bg-gray-500" />
 
                     <div>
@@ -47,10 +79,10 @@ export default function CV() {
                             G-Tech Solutions
                         </p>
                     </div>
-                </div>
+                </motion.div>
 
                 {/* Item 2 */}
-                <div className="relative flex gap-8">
+                <motion.div className="relative flex gap-8" variants={itemVariants}>
                     <span className="absolute -left-7.5 top-0 w-3 h-3 rounded-full bg-gray-500" />
 
                     <div>
@@ -77,9 +109,9 @@ export default function CV() {
                             AHA Marketing Agency
                         </p>
                     </div>
-                </div>
+                </motion.div>
 
             </div>
-        </section>
+        </motion.section>
     );
 }

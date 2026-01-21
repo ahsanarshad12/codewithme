@@ -43,7 +43,7 @@ const Header = ({ onMenuClick }) => {
     return (
         <>
             {/* Settings Icon */}
-            <button className="fixed top-4 sm:top-6 md:top-8 left-4 sm:left-6 md:left-8 w-10 h-10 rounded-full border border-neutral-800 flex items-center justify-center text-neutral-500 hover:text-emerald-400 hover:border-emerald-400 transition-all z-30">
+            <button className="absolute top-4 sm:top-6 md:top-8 left-4 sm:left-6 md:left-8 w-10 h-10 rounded-full border border-neutral-800 flex items-center justify-center text-neutral-500 hover:text-emerald-400 hover:border-emerald-400 transition-all z-30">
                 <Settings size={20} />
             </button>
 
@@ -56,7 +56,7 @@ const Header = ({ onMenuClick }) => {
             {/* Menu Button */}
             <button
                 onClick={onMenuClick}
-                className="fixed top-4 sm:top-6 md:top-8 right-4 sm:right-6 md:right-8 w-10 sm:w-12 h-10 sm:h-12 rounded-full border border-neutral-800 flex items-center justify-center text-neutral-400 hover:text-emerald-400 hover:border-emerald-400 transition-all z-30"
+                className="absolute top-4 sm:top-6 md:top-8 right-4 sm:right-6 md:right-8 w-10 sm:w-12 h-10 sm:h-12 rounded-full border border-neutral-800 flex items-center justify-center text-neutral-400 hover:text-emerald-400 hover:border-emerald-400 transition-all z-30"
             >
                 <Menu size={20} />
             </button>

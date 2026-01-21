@@ -1,9 +1,12 @@
 // app/pricing/page.jsx
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 
 export default function PricingContactPage() {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, amount: 0.2 });
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -66,12 +69,23 @@ export default function PricingContactPage() {
     ];
 
     return (
-        <div className="min-h-screen ">
+        <motion.div
+            ref={ref}
+            className="min-h-screen"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 0.8 }}
+        >
             {/* Pricing Section */}
             <div className="py-16 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
                     {/* Pricing Badge */}
-                    <div className="mb-8">
+                    <motion.div
+                        className="mb-8"
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
+                        transition={{ duration: 0.6 }}
+                    >
                         <button className="flex items-center gap-2 px-4 py-2 border border-gray-600 rounded-full text-white text-xs uppercase tracking-wider hover:border-gray-500 transition-colors">
                             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                 <rect x="3" y="3" width="18" height="18" rx="2" />
@@ -80,20 +94,28 @@ export default function PricingContactPage() {
                             </svg>
                             PRICING
                         </button>
-                    </div>
+                    </motion.div>
 
                     {/* Header */}
-                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-16">
+                    <motion.h1
+                        className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-16"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                    >
                         <span className="text-white">My </span>
                         <span className="text-emerald-400">Pricing</span>
-                    </h1>
+                    </motion.h1>
 
                     {/* Pricing Cards */}
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
                         {pricingPlans.map((plan, index) => (
-                            <div
+                            <motion.div
                                 key={index}
                                 className="border-2 border-gray-700 rounded-3xl p-8 bg-gray-900/50 backdrop-blur-sm hover:border-gray-600 transition-all"
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                                transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
                             >
                                 {/* Plan Header */}
                                 <div className="mb-8">
@@ -128,10 +150,10 @@ export default function PricingContactPage() {
                                 </ul>
 
                                 {/* CTA Button */}
-                                <button className="w-full bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold py-4 px-6 rounded-full transition-colors text-sm tracking-wider">
+                                <button className="w-full max-w-70 absolute bottom-10  bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold py-4 px-6 rounded-full transition-colors text-sm tracking-wider">
                                     {plan.buttonText}
                                 </button>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
 
@@ -279,6 +301,6 @@ export default function PricingContactPage() {
                     </form>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 }
