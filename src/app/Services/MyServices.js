@@ -54,7 +54,7 @@ export default function SpecializationsPage() {
                     SERVICES
                 </button>
             </div>
-            <div className="max-w-full mx-auto">
+            <div className="max-w-full mx-auto relative z-10">
                 {/* Header */}
                 <motion.h1
                     className="text-4xl sm:text-5xl font-bold mb-12"

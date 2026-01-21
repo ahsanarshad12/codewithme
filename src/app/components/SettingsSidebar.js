@@ -1,11 +1,35 @@
 'use client';
 import React, { useState } from 'react';
-import { X, Palette, Type } from 'lucide-react';
+import { X, Palette, Type, Sparkles } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
 const SettingsSidebar = ({ isOpen, onClose }) => {
     const { theme, updateTheme, resetTheme } = useTheme();
     const [activeTab, setActiveTab] = useState('colors');
+
+    const animations = [
+        { id: 'liquid-wave', name: 'Liquid Wave' },
+        { id: 'aurora-borealis', name: 'Aurora Borealis' },
+        { id: 'floating-bubbles', name: 'Floating Bubbles' },
+        { id: 'galaxy-spiral', name: 'Galaxy Spiral' },
+        { id: 'fireflies', name: 'Fireflies' },
+        { id: 'matrix-rain', name: 'Matrix Rain' },
+        { id: 'geometric-shapes', name: 'Geometric Shapes' },
+        { id: 'morphing-blob', name: 'Morphing Blob' },
+        { id: 'wave-gradient', name: 'Wave Gradient' },
+        { id: 'constellation', name: 'Constellation' },
+        { id: 'rain-drops', name: 'Rain Drops' },
+        { id: 'api-data-flow', name: 'API Data Flow' },
+        { id: 'circuit-board', name: 'Circuit Board' },
+        { id: 'code-rain-3d', name: 'Code Rain 3D' },
+        { id: 'code-syntax-particles', name: 'Code Syntax Particles' },
+        { id: 'code-terminal', name: 'Code Terminal' },
+        { id: 'git-commit-graph', name: 'Git Commit Graph' },
+        { id: 'interactive-mesh-grid', name: 'Interactive Mesh Grid' },
+        { id: 'keyboard-heatmap', name: 'Keyboard Heatmap' },
+        { id: 'neural-network', name: 'Neural Network' },
+        { id: 'tech-stack-orbit', name: 'Tech Stack Orbit' },
+    ];
 
     const fontFamilies = [
         { name: 'System UI', value: 'system-ui, -apple-system, sans-serif' },
@@ -39,6 +63,10 @@ const SettingsSidebar = ({ isOpen, onClose }) => {
         updateTheme({ fontFamily });
     };
 
+    const handleAnimationChange = (animationId) => {
+        updateTheme({ animation: animationId });
+    };
+
     return (
         <>
             {/* Overlay */}
@@ -66,10 +94,10 @@ const SettingsSidebar = ({ isOpen, onClose }) => {
                 </div>
 
                 {/* Tabs */}
-                <div className="flex border-b border-neutral-800">
+                <div className="flex border-b border-neutral-800 overflow-x-auto">
                     <button
                         onClick={() => setActiveTab('colors')}
-                        className={`flex-1 py-3 px-4 flex items-center justify-center gap-2 transition-colors ${activeTab === 'colors'
+                        className={`flex-1 py-3 px-4 flex items-center justify-center gap-2 transition-colors whitespace-nowrap ${activeTab === 'colors'
                             ? 'bg-emerald-400 text-neutral-950 border-b-2 border-emerald-400'
                             : 'text-neutral-400 hover:text-neutral-300'
                             }`}
@@ -79,13 +107,23 @@ const SettingsSidebar = ({ isOpen, onClose }) => {
                     </button>
                     <button
                         onClick={() => setActiveTab('fonts')}
-                        className={`flex-1 py-3 px-4 flex items-center justify-center gap-2 transition-colors ${activeTab === 'fonts'
+                        className={`flex-1 py-3 px-4 flex items-center justify-center gap-2 transition-colors whitespace-nowrap ${activeTab === 'fonts'
                             ? 'bg-emerald-400 text-neutral-950 border-b-2 border-emerald-400'
                             : 'text-neutral-400 hover:text-neutral-300'
                             }`}
                     >
                         <Type size={18} />
                         Fonts
+                    </button>
+                    <button
+                        onClick={() => setActiveTab('animations')}
+                        className={`flex-1 py-3 px-4 flex items-center justify-center gap-2 transition-colors whitespace-nowrap ${activeTab === 'animations'
+                            ? 'bg-emerald-400 text-neutral-950 border-b-2 border-emerald-400'
+                            : 'text-neutral-400 hover:text-neutral-300'
+                            }`}
+                    >
+                        <Sparkles size={18} />
+                        Animations
                     </button>
                 </div>
 
@@ -117,7 +155,7 @@ const SettingsSidebar = ({ isOpen, onClose }) => {
                                         className="flex-1 px-3 py-2 bg-neutral-800 border border-neutral-700 rounded text-neutral-300 text-sm"
                                     />
                                 </div>
-                                <div className="grid grid-cols-4 gap-2">
+                                {/* <div className="grid grid-cols-4 gap-2">
                                     {colorPresets.map((preset) => (
                                         <button
                                             key={preset.color}
@@ -135,7 +173,7 @@ const SettingsSidebar = ({ isOpen, onClose }) => {
                                             title={preset.name}
                                         />
                                     ))}
-                                </div>
+                                </div> */}
                             </div>
 
                             {/* Text Color */}
@@ -161,7 +199,7 @@ const SettingsSidebar = ({ isOpen, onClose }) => {
                                         className="flex-1 px-3 py-2 bg-neutral-800 border border-neutral-700 rounded text-neutral-300 text-sm"
                                     />
                                 </div>
-                                <div className="grid grid-cols-4 gap-2">
+                                {/* <div className="grid grid-cols-4 gap-2">
                                     {colorPresets.map((preset) => (
                                         <button
                                             key={preset.color + 'text'}
@@ -179,7 +217,7 @@ const SettingsSidebar = ({ isOpen, onClose }) => {
                                             title={preset.name}
                                         />
                                     ))}
-                                </div>
+                                </div> */}
                             </div>
 
                             {/* Secondary Text Color */}
@@ -230,7 +268,7 @@ const SettingsSidebar = ({ isOpen, onClose }) => {
                                         className="flex-1 px-3 py-2 bg-neutral-800 border border-neutral-700 rounded text-neutral-300 text-sm"
                                     />
                                 </div>
-                                <div className="grid grid-cols-4 gap-2">
+                                {/* <div className="grid grid-cols-4 gap-2">
                                     {colorPresets.map((preset) => (
                                         <button
                                             key={preset.color + 'btn'}
@@ -248,7 +286,7 @@ const SettingsSidebar = ({ isOpen, onClose }) => {
                                             title={preset.name}
                                         />
                                     ))}
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     )}
@@ -275,6 +313,31 @@ const SettingsSidebar = ({ isOpen, onClose }) => {
                                         </div>
                                         <div className="text-xs text-neutral-500">
                                             The quick brown fox jumps over the lazy dog
+                                        </div>
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Animations Tab */}
+                    {activeTab === 'animations' && (
+                        <div className="space-y-4">
+                            <label className="block text-sm font-semibold text-neutral-300 mb-4">
+                                Background Animation
+                            </label>
+                            <div className="grid grid-cols-2 gap-2">
+                                {animations.map((anim) => (
+                                    <button
+                                        key={anim.id}
+                                        onClick={() => handleAnimationChange(anim.id)}
+                                        className={`px-3 py-3 rounded border-2 transition-all text-center ${theme.animation === anim.id
+                                            ? 'border-emerald-400 bg-emerald-400 bg-opacity-10'
+                                            : 'border-neutral-700 hover:border-neutral-600'
+                                            }`}
+                                    >
+                                        <div className="text-xs font-semibold text-neutral-300">
+                                            {anim.name}
                                         </div>
                                     </button>
                                 ))}

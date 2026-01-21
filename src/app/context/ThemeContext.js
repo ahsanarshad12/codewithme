@@ -19,6 +19,7 @@ export const ThemeProvider = ({ children }) => {
         buttonBgColor: '#1f2937', // neutral-800
         accentColor: '#10b981', // emerald-400
         fontFamily: 'system-ui, -apple-system, sans-serif',
+        animation: 'liquid-wave', // Default animation
     });
 
     const [isLoaded, setIsLoaded] = useState(false);
@@ -55,6 +56,7 @@ export const ThemeProvider = ({ children }) => {
             buttonBgColor: '#1f2937',
             accentColor: '#10b981',
             fontFamily: 'system-ui, -apple-system, sans-serif',
+            animation: 'liquid-wave',
         };
         setTheme(defaultTheme);
         localStorage.removeItem('userTheme');

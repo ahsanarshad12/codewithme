@@ -7,6 +7,11 @@ import { motion, useInView } from 'framer-motion';
 export default function PricingContactPage() {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, amount: 0.2 });
+
+    // Loading and Success States
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [statusMessage, setStatusMessage] = useState({ type: '', text: '' });
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -22,12 +27,35 @@ export default function PricingContactPage() {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Form submitted:', formData);
-        // Add your form submission logic here
+        setIsSubmitting(true);
+        setStatusMessage({ type: '', text: '' });
+
+        try {
+            const response = await fetch('/api/send-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                setStatusMessage({ type: 'success', text: 'Message sent successfully! I will contact you soon.' });
+                setFormData({ name: '', email: '', subject: '', budget: '', message: '' }); // Clear form
+            } else {
+                setStatusMessage({ type: 'error', text: 'Failed to send message. Please try again.' });
+            }
+        } catch (error) {
+            console.error(error);
+            setStatusMessage({ type: 'error', text: 'Something went wrong.' });
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
+    // ... (Keep your pricingPlans array exactly as it was) ...
     const pricingPlans = [
         {
             name: 'BASIC',
@@ -76,10 +104,10 @@ export default function PricingContactPage() {
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.8 }}
         >
-            {/* Pricing Section */}
+            {/* ... (Keep your Pricing Section exactly as it was) ... */}
             <div className="py-16 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
-                    {/* Pricing Badge */}
+                    {/* ... Pricing Badge, Header, Cards, Bottom Note code goes here (unchanged) ... */}
                     <motion.div
                         className="mb-8"
                         initial={{ opacity: 0, y: -10 }}
@@ -96,7 +124,6 @@ export default function PricingContactPage() {
                         </button>
                     </motion.div>
 
-                    {/* Header */}
                     <motion.h1
                         className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-16"
                         initial={{ opacity: 0, y: 20 }}
@@ -107,17 +134,15 @@ export default function PricingContactPage() {
                         <span className="text-emerald-400">Pricing</span>
                     </motion.h1>
 
-                    {/* Pricing Cards */}
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
                         {pricingPlans.map((plan, index) => (
                             <motion.div
                                 key={index}
-                                className="border-2 border-gray-700 rounded-3xl p-8 bg-gray-900/50 backdrop-blur-sm hover:border-gray-600 transition-all"
+                                className="border-2 border-gray-700 rounded-3xl p-8 bg-gray-900/50 backdrop-blur-sm hover:border-gray-600 transition-all relative"
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                                 transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
                             >
-                                {/* Plan Header */}
                                 <div className="mb-8">
                                     <h3 className="text-white text-sm font-bold tracking-wider mb-2">
                                         {plan.name}
@@ -135,8 +160,7 @@ export default function PricingContactPage() {
                                     </div>
                                 </div>
 
-                                {/* Features List */}
-                                <ul className="space-y-4 mb-8">
+                                <ul className="space-y-4 mb-20">
                                     {plan.features.map((feature, idx) => (
                                         <li key={idx} className="flex items-start gap-3">
                                             <svg className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -149,15 +173,13 @@ export default function PricingContactPage() {
                                     ))}
                                 </ul>
 
-                                {/* CTA Button */}
-                                <button className="w-full max-w-70 absolute bottom-10  bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold py-4 px-6 rounded-full transition-colors text-sm tracking-wider">
+                                <button className="w-[calc(100%-4rem)] absolute bottom-8 left-8 bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold py-4 px-6 rounded-full transition-colors text-sm tracking-wider">
                                     {plan.buttonText}
                                 </button>
                             </motion.div>
                         ))}
                     </div>
 
-                    {/* Bottom Note */}
                     <p className="text-gray-400 text-sm text-center">
                         Can't find the package? match with your plan? don't worry to make a new offer, check pricing for only you!{' '}
                         <a href="#contact" className="text-emerald-400 hover:underline">
@@ -170,7 +192,7 @@ export default function PricingContactPage() {
             {/* Contact Section */}
             <div className="py-16 px-4 sm:px-6 lg:px-8 ">
                 <div className="max-w-7xl mx-auto">
-                    {/* Contact Badge */}
+                    {/* ... Contact Badge, Header ... */}
                     <div className="mb-8">
                         <button className="flex items-center gap-2 px-4 py-2 border border-gray-600 rounded-full text-white text-xs uppercase tracking-wider hover:border-gray-500 transition-colors">
                             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -180,14 +202,13 @@ export default function PricingContactPage() {
                         </button>
                     </div>
 
-                    {/* Header */}
                     <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">
                         <span className="text-white">Let's Work </span>
                         <span className="text-emerald-400">Together!</span>
                     </h2>
 
                     <p className="text-emerald-400 text-xl mb-12">
-                        hello@drake.design
+                        ahsanarshad291@gmail.com
                     </p>
 
                     {/* Contact Form */}
@@ -287,16 +308,26 @@ export default function PricingContactPage() {
                             </label>
                         </div>
 
+                        {/* Status Message */}
+                        {statusMessage.text && (
+                            <div className={`p-4 rounded-lg mb-4 ${statusMessage.type === 'success' ? 'bg-emerald-400/20 text-emerald-400 border border-emerald-400/50' : 'bg-red-400/20 text-red-400 border border-red-400/50'}`}>
+                                {statusMessage.text}
+                            </div>
+                        )}
+
                         {/* Submit Button */}
                         <button
                             type="submit"
-                            className="bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold py-4 px-8 rounded-full transition-colors text-sm tracking-wider inline-flex items-center gap-2"
+                            disabled={isSubmitting}
+                            className={`bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-bold py-4 px-8 rounded-full transition-colors text-sm tracking-wider inline-flex items-center gap-2 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
                         >
-                            SEND MESSAGE
-                            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                <path d="M5 12h14" />
-                                <path d="M12 5l7 7-7 7" />
-                            </svg>
+                            {isSubmitting ? 'SENDING...' : 'SEND MESSAGE'}
+                            {!isSubmitting && (
+                                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                    <path d="M5 12h14" />
+                                    <path d="M12 5l7 7-7 7" />
+                                </svg>
+                            )}
                         </button>
                     </form>
                 </div>

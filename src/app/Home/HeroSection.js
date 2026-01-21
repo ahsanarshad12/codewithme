@@ -8,7 +8,7 @@ import AboutMe from '../About/AboutMe';
 import CV from '../Resume/CV';
 import SpecializationsPage from '../Services/MyServices';
 import SkillsPage from '../Skills/MySkills';
-import LiquidWaveBackground from '../components/LiquidWaveBackground';
+import AnimationBackground from '../components/AnimationBackground';
 import ProjectsPage from '../Proejcts/MyProjects';
 import TestimonialsPage from '../Testimonials/ClientTestimonials';
 import PricingContactPage from '../Pricing/Final';
@@ -18,7 +18,8 @@ const HeroSection = () => {
 
     return (
         <div className="bg-neutral-950 text-white relative overflow-hidden">
-            <LiquidWaveBackground />
+            <AnimationBackground />
+
             {/* Header */}
             <Header onMenuClick={() => setIsSidebarOpen(true)} />
 
@@ -47,42 +48,42 @@ const HeroSection = () => {
                 {/* Right Side - Scrollable Main Content (70% width on desktop, full width on mobile) */}
                 <div className="w-full lg:ml-[30%] lg:w-[70%]">
                     {/* Home Section */}
-                    <section id="home" className="min-h-screen flex items-center justify-center p-4 sm:p-6 md:p-8 md:pr-24">
+                    <section id="home" className="z-10 relative min-h-screen flex items-center justify-center p-4 sm:p-6 md:p-8 md:pr-24">
                         <MainContent />
                     </section>
 
                     {/* About Section */}
-                    <section id="about" className="min-h-screen flex items-start justify-start p-4 sm:p-6 md:p-8 md:pr-24">
+                    <section id="about" className="relative z-10 min-h-screen flex items-start justify-start p-4 sm:p-6 md:p-8 md:pr-24">
                         <AboutMe />
                     </section>
 
                     {/* Resume Section */}
-                    <section id="resume" className="min-h-screen flex items-start justify-start p-4 sm:p-6 md:p-8 md:pr-24">
+                    <section id="resume" className="relative z-10 min-h-screen flex items-start justify-start p-4 sm:p-6 md:p-8 md:pr-24">
                         <CV />
                     </section>
 
                     {/* Services Section */}
-                    <section id="services" className="min-h-screen flex items-start justify-start p-4 sm:p-6 md:p-8 md:pr-24">
+                    <section id="services" className="relative z-10 min-h-screen flex items-start justify-start p-4 sm:p-6 md:p-8 md:pr-24">
                         <SpecializationsPage />
                     </section>
 
                     {/* Socials Section */}
-                    <section id="socials" className="min-h-screen flex items-start justify-start p-4 sm:p-6 md:p-8 md:pr-24">
+                    <section id="socials" className="relative z-10  min-h-screen flex items-start justify-start p-4 sm:p-6 md:p-8 md:pr-24">
                         <SkillsPage />
                     </section>
 
                     {/* Projects Section */}
-                    <section id="projects" className="min-h-screen flex items-start justify-start p-4 sm:p-6 md:p-8 md:pr-24">
+                    <section id="projects" className="relative z-10 min-h-screen flex items-start justify-start p-4 sm:p-6 md:p-8 md:pr-24">
                         <ProjectsPage />
                     </section>
 
                     {/* Blog Section */}
-                    <section id="testimonials" className="min-h-screen flex items-start justify-start p-4 sm:p-6 md:p-8 md:pr-24">
+                    <section id="testimonials" className="relative z-10 min-h-screen flex items-start justify-start p-4 sm:p-6 md:p-8 md:pr-24">
                         <TestimonialsPage />
                     </section>
 
                     {/* Contact Section */}
-                    <section id="contact" className="min-h-screen flex items-start justify-start p-4 sm:p-6 md:p-8 md:pr-24">
+                    <section id="contact" className="relative z-10 min-h-screen flex items-start justify-start p-4 sm:p-6 md:p-8 md:pr-24">
                         <PricingContactPage />
                     </section>
                 </div>

@@ -48,7 +48,7 @@ const AboutMe = () => {
                     ABOUT ME
                 </button>
             </div>
-            <div className="flex flex-col gap-3 sm:gap-4 md:gap-4 mt-8 sm:mt-12 md:mt-0">
+            <div className="flex relative z-10 flex-col gap-3 sm:gap-4 md:gap-4 mt-8 sm:mt-12 md:mt-0">
                 <motion.h2
                     className="font-normal text-2xl sm:text-4xl md:text-5xl lg:text-[55px] text-white w-full lg:max-w-[70%] leading-tight"
                     initial={{ opacity: 0, y: 30 }}
