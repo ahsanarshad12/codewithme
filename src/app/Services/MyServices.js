@@ -71,7 +71,7 @@ export default function SpecializationsPage() {
                     {specializations.map((spec, index) => (
                         <motion.div
                             key={index}
-                            className="w-80 lg:w-[140%] group backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 hover:bg-gray-800/70 hover:border-gray-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-emerald-500/10 cursor-pointer"
+                            className="w-80 xl:w-[110%] 2xl:w-[140%] group backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 hover:bg-gray-800/70 hover:border-gray-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-emerald-500/10 cursor-pointer"
                             initial={{ opacity: 0, x: -50 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{

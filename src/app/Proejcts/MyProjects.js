@@ -49,7 +49,7 @@ export default function ProjectsPage() {
 
     return (
         <div className="min-h-screen  py-16 px-4 sm:px-6 lg:px-8">
-            <div className="w-250 mx-auto">
+            <div className="2xl:w-250 mx-auto">
                 {/* Portfolio Badge */}
                 <div className="mb-8">
                     <button className="flex items-center gap-2 px-4 py-2 border border-gray-600 rounded-full text-white text-xs uppercase tracking-wider hover:border-gray-500 transition-colors">
