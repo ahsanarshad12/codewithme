@@ -45,11 +45,11 @@ const APIDataFlow = () => {
             const path = [];
             const controlX = (startX + endX) / 2;
             const controlY = (startY + endY) / 2 - 50;
-            
+
             for (let t = 0; t <= 1; t += 0.05) {
-                const x = (1-t)*(1-t)*startX + 2*(1-t)*t*controlX + t*t*endX;
-                const y = (1-t)*(1-t)*startY + 2*(1-t)*t*controlY + t*t*endY;
-                path.push({x, y});
+                const x = (1 - t) * (1 - t) * startX + 2 * (1 - t) * t * controlX + t * t * endX;
+                const y = (1 - t) * (1 - t) * startY + 2 * (1 - t) * t * controlY + t * t * endY;
+                path.push({ x, y });
             }
 
             packets.push({
@@ -107,7 +107,7 @@ const APIDataFlow = () => {
                 const color = packet.type === 'request' ? '59, 130, 246' : '16, 185, 129';
                 gradient.addColorStop(0, `rgba(${color}, 1)`);
                 gradient.addColorStop(1, 'transparent');
-                
+
                 ctx.beginPath();
                 ctx.arc(currentPoint.x, currentPoint.y, 15, 0, Math.PI * 2);
                 ctx.fillStyle = gradient;

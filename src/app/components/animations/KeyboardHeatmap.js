@@ -31,7 +31,7 @@ const KeyboardHeatmap = () => {
     const getHeatColor = (count) => {
         const maxCount = Math.max(...Object.values(keyPresses), 1);
         const intensity = count / maxCount;
-        
+
         if (intensity === 0) return 'bg-gray-800';
         if (intensity < 0.25) return 'bg-blue-900';
         if (intensity < 0.5) return 'bg-blue-600';
@@ -65,7 +65,7 @@ const KeyboardHeatmap = () => {
                             const count = keyPresses[key] || keyPresses[key.toLowerCase()] || 0;
                             const isSpace = key === 'SPACE';
                             const isActive = lastKey === key || lastKey === key.toLowerCase();
-                            
+
                             return (
                                 <div
                                     key={key}

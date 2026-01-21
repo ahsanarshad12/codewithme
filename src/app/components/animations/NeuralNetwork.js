@@ -31,7 +31,7 @@ const NeuralNetwork = () => {
         const initNodes = () => {
             nodes.length = 0;
             const layerGap = canvas.width / (layers.length + 1);
-            
+
             layers.forEach((nodeCount, layerIndex) => {
                 const nodeGap = canvas.height / (nodeCount + 1);
                 for (let i = 0; i < nodeCount; i++) {
@@ -71,7 +71,7 @@ const NeuralNetwork = () => {
                         const alpha = (nodes[i].activation + nodes[j].activation) / 4;
                         gradient.addColorStop(0, `rgba(0, 255, 200, ${alpha})`);
                         gradient.addColorStop(1, `rgba(100, 150, 255, ${alpha})`);
-                        
+
                         ctx.beginPath();
                         ctx.moveTo(nodes[i].x, nodes[i].y);
                         ctx.lineTo(nodes[j].x, nodes[j].y);
@@ -84,7 +84,7 @@ const NeuralNetwork = () => {
 
             nodes.forEach(node => {
                 const radius = 8 + node.activation * 8;
-                
+
                 const gradient = ctx.createRadialGradient(
                     node.x, node.y, 0,
                     node.x, node.y, radius * 3
@@ -107,17 +107,17 @@ const NeuralNetwork = () => {
                 const progress = ((time * 0.5 + i / particleCount) % 1);
                 const startLayer = Math.floor(progress * (layers.length - 1));
                 const localProgress = (progress * (layers.length - 1)) % 1;
-                
+
                 const startNodes = nodes.filter(n => n.layer === startLayer);
                 const endNodes = nodes.filter(n => n.layer === startLayer + 1);
-                
+
                 if (startNodes.length && endNodes.length) {
                     const startNode = startNodes[i % startNodes.length];
                     const endNode = endNodes[i % endNodes.length];
-                    
+
                     const x = startNode.x + (endNode.x - startNode.x) * localProgress;
                     const y = startNode.y + (endNode.y - startNode.y) * localProgress;
-                    
+
                     ctx.beginPath();
                     ctx.arc(x, y, 4, 0, Math.PI * 2);
                     ctx.fillStyle = 'rgba(0, 255, 200, 0.8)';

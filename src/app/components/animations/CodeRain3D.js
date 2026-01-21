@@ -18,7 +18,7 @@ const CodeRain3D = () => {
         window.addEventListener('resize', resizeCanvas);
 
         const chars = '01アイウエオカキクケコ<>{}[]();:=+-*/&|!?#$@%^~';
-        
+
         const streams = [];
         const streamCount = Math.floor(canvas.width / 20);
 
@@ -30,7 +30,7 @@ const CodeRain3D = () => {
                 y: Math.random() * canvas.height * 2 - canvas.height,
                 speed: (1 + depth * 2) * 3,
                 depth,
-                chars: Array(length).fill('').map(() => 
+                chars: Array(length).fill('').map(() =>
                     chars[Math.floor(Math.random() * chars.length)]
                 ),
                 length
@@ -46,21 +46,21 @@ const CodeRain3D = () => {
             streams.forEach(stream => {
                 const fontSize = 10 + stream.depth * 10;
                 ctx.font = `${fontSize}px monospace`;
-                
+
                 stream.chars.forEach((char, i) => {
                     const y = stream.y - i * fontSize;
                     if (y < -fontSize || y > canvas.height + fontSize) return;
 
                     const alpha = 1 - (i / stream.length);
                     const brightness = stream.depth * 0.5 + 0.5;
-                    
+
                     if (i === 0) {
                         ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
                     } else {
                         const g = Math.floor(150 + brightness * 105);
                         ctx.fillStyle = `rgba(0, ${g}, ${Math.floor(g * 0.6)}, ${alpha * brightness})`;
                     }
-                    
+
                     ctx.fillText(char, stream.x, y);
 
                     if (Math.random() > 0.98) {

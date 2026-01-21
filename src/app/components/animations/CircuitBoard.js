@@ -27,7 +27,7 @@ const CircuitBoard = () => {
 
         const gridSize = 60;
         const nodes = [];
-        
+
         const initNodes = () => {
             nodes.length = 0;
             for (let x = gridSize; x < canvas.width; x += gridSize) {
@@ -90,15 +90,15 @@ const CircuitBoard = () => {
                 node.connections.forEach(j => {
                     const other = nodes[j];
                     const active = node.active || other.active;
-                    
+
                     ctx.beginPath();
-                    
+
                     const midX = node.x + (other.x - node.x) * 0.5;
                     ctx.moveTo(node.x, node.y);
                     ctx.lineTo(midX, node.y);
                     ctx.lineTo(midX, other.y);
                     ctx.lineTo(other.x, other.y);
-                    
+
                     ctx.strokeStyle = active ? '#10b98150' : '#10b98120';
                     ctx.stroke();
                 });
@@ -107,7 +107,7 @@ const CircuitBoard = () => {
             for (let i = pulses.length - 1; i >= 0; i--) {
                 const pulse = pulses[i];
                 pulse.progress += 0.03;
-                
+
                 if (pulse.progress >= 1) {
                     pulses.splice(i, 1);
                     continue;
@@ -116,7 +116,7 @@ const CircuitBoard = () => {
                 const from = nodes[pulse.from];
                 const to = nodes[pulse.to];
                 const midX = from.x + (to.x - from.x) * 0.5;
-                
+
                 let x, y;
                 if (pulse.progress < 0.33) {
                     const p = pulse.progress / 0.33;
@@ -136,7 +136,7 @@ const CircuitBoard = () => {
                 ctx.arc(x, y, 4, 0, Math.PI * 2);
                 ctx.fillStyle = '#10b981';
                 ctx.fill();
-                
+
                 const gradient = ctx.createRadialGradient(x, y, 0, x, y, 20);
                 gradient.addColorStop(0, '#10b98150');
                 gradient.addColorStop(1, 'transparent');
@@ -149,7 +149,7 @@ const CircuitBoard = () => {
             nodes.forEach(node => {
                 const pulse = (Math.sin(node.pulsePhase) + 1) * 0.5;
                 const size = node.active ? 6 + pulse * 3 : 4;
-                
+
                 if (node.active) {
                     const gradient = ctx.createRadialGradient(
                         node.x, node.y, 0,

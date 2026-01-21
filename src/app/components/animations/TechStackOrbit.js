@@ -74,7 +74,7 @@ const TechStackOrbit = () => {
                     );
                 })}
 
-                <div 
+                <div
                     className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-32 border border-blue-500/30 rounded-full"
                     style={{ transform: 'translate(-50%, -50%) rotateX(60deg)' }}
                 />

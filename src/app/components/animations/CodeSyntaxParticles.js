@@ -59,7 +59,7 @@ const CodeSyntaxParticles = () => {
                 const dx = mouseX - this.x;
                 const dy = mouseY - this.y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
-                
+
                 if (distance < 200) {
                     const force = (200 - distance) / 200;
                     this.vx += (dx / distance) * force * 0.02;

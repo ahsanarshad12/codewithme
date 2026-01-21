@@ -67,7 +67,7 @@ const InteractiveMeshGrid = () => {
             });
 
             const cols = Math.ceil(canvas.width / gridSize) + 1;
-            
+
             for (let i = 0; i < points.length; i++) {
                 const point = points[i];
                 const rightIndex = i + 1;
@@ -81,7 +81,7 @@ const InteractiveMeshGrid = () => {
                         (mouseX - midX) ** 2 + (mouseY - midY) ** 2
                     );
                     const alpha = Math.max(0.1, Math.min(0.8, 1 - distToMouse / 200));
-                    
+
                     ctx.beginPath();
                     ctx.moveTo(point.x, point.y);
                     ctx.lineTo(rightPoint.x, rightPoint.y);
@@ -98,7 +98,7 @@ const InteractiveMeshGrid = () => {
                         (mouseX - midX) ** 2 + (mouseY - midY) ** 2
                     );
                     const alpha = Math.max(0.1, Math.min(0.8, 1 - distToMouse / 200));
-                    
+
                     ctx.beginPath();
                     ctx.moveTo(point.x, point.y);
                     ctx.lineTo(bottomPoint.x, bottomPoint.y);

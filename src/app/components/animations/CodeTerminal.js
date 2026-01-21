@@ -33,7 +33,7 @@ const CodeTerminal = () => {
         }
 
         const currentSnippet = codeSnippets[lineIndex];
-        
+
         if (charIndex < currentSnippet.text.length) {
             const timeout = setTimeout(() => {
                 setCurrentLine(prev => prev + currentSnippet.text[charIndex]);
@@ -52,7 +52,7 @@ const CodeTerminal = () => {
     }, [charIndex, lineIndex, currentLine]);
 
     const getLineColor = (type) => {
-        switch(type) {
+        switch (type) {
             case 'command': return 'text-green-400';
             case 'success': return 'text-cyan-400';
             case 'output': return 'text-gray-300';
@@ -70,7 +70,7 @@ const CodeTerminal = () => {
                     <div className="w-3 h-3 rounded-full bg-green-500"></div>
                     <span className="ml-4 text-gray-400 text-sm font-mono">developer@portfolio ~ </span>
                 </div>
-                
+
                 <div className="p-4 font-mono text-sm h-80 overflow-hidden">
                     {lines.slice(-10).map((line, idx) => (
                         <div key={idx} className={`${getLineColor(line.type)} mb-1`}>

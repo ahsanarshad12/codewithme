@@ -20,7 +20,7 @@ const GitCommitGraph = () => {
 
         const branches = ['main', 'feature', 'develop', 'hotfix'];
         const branchColors = ['#10b981', '#3b82f6', '#8b5cf6', '#ef4444'];
-        
+
         const commits = [];
         const messages = [
             'Initial commit',
@@ -68,7 +68,7 @@ const GitCommitGraph = () => {
             commits.forEach((commit, idx) => {
                 const y = commit.y - scrollOffset + canvas.height;
                 const adjustedY = y % (commits.length * 80);
-                
+
                 if (adjustedY < -50 || adjustedY > canvas.height + 50) return;
 
                 if (commit.mergeFrom !== undefined) {
