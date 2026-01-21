@@ -16,7 +16,7 @@ export default function CV() {
                 </button>
             </div>
             {/* Title */}
-            <h2 className="text-3xl md:text-4xl font-semibold mb-14">
+            <h2 className="text-3xl md:text-7xl font-semibold mb-14">
                 Education & <span className="text-emerald-400">Experience</span>
             </h2>
 
@@ -31,19 +31,19 @@ export default function CV() {
                     <span className="absolute -left-7.5 top-0 w-3 h-3 rounded-full bg-gray-500" />
 
                     <div>
-                        <p className="text-sm text-gray-400 mb-4">2025 - Present</p>
+                        <p className="text-lg text-gray-400 mb-4">2025 - Present</p>
 
-                        <h3 className="text-xl font-medium">
+                        <h3 className="text-3xl font-medium">
                             NextJs Front-End Developer
                         </h3>
-                        <p className="text-sm text-gray-400 mb-6">
+                        <p className="text-lg text-gray-400 mb-6">
                             G-Tech Solutions
                         </p>
 
                         <h3 className="text-xl font-medium">
                             Laravel Back-End Developer
                         </h3>
-                        <p className="text-sm text-gray-400">
+                        <p className="text-lg text-gray-400">
                             G-Tech Solutions
                         </p>
                     </div>
@@ -54,26 +54,26 @@ export default function CV() {
                     <span className="absolute -left-7.5 top-0 w-3 h-3 rounded-full bg-gray-500" />
 
                     <div>
-                        <p className="text-sm text-gray-400 mb-4">2013 – 2019</p>
+                        <p className="text-lg text-gray-400 mb-4">2013 – 2019</p>
 
-                        <h3 className="text-xl font-medium">
+                        <h3 className="text-3xl font-medium">
                             Webflow Developer & Co-Founder
                         </h3>
-                        <p className="text-sm text-gray-400 mb-6">
+                        <p className="text-lg text-gray-400 mb-6">
                             Designflow Studio
                         </p>
 
-                        <h3 className="text-xl font-medium">
+                        <h3 className="text-3xl font-medium">
                             Web Designer
                         </h3>
-                        <p className="text-sm text-gray-400 mb-6">
+                        <p className="text-lg text-gray-400 mb-6">
                             Freelance
                         </p>
 
-                        <h3 className="text-xl font-medium">
+                        <h3 className="text-3xl font-medium">
                             Leader Team of Marketing
                         </h3>
-                        <p className="text-sm text-gray-400">
+                        <p className="text-lg text-gray-400">
                             AHA Marketing Agency
                         </p>
                     </div>
