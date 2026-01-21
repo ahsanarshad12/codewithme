@@ -3,22 +3,30 @@ import { Home, User, Briefcase, Layers, Share2, Grid, MessageSquare, Send, X, In
 
 const NavigationSidebar = ({ isOpen, onClose }) => {
     const navItems = [
-        { icon: Home, label: 'Home' },
-        { icon: User, label: 'About' },
-        { icon: Briefcase, label: 'Resume' },
-        { icon: Layers, label: 'Services' },
-        { icon: Share2, label: 'Socials' },
-        { icon: Grid, label: 'Projects' },
-        { icon: MessageSquare, label: 'Testimonials' },
-        { icon: Send, label: 'Contact' },
+        { icon: Home, label: 'Home', id: 'home' },
+        { icon: User, label: 'About', id: 'about' },
+        { icon: Briefcase, label: 'Resume', id: 'resume' },
+        { icon: Layers, label: 'Services', id: 'services' },
+        { icon: Share2, label: 'Socials', id: 'socials' },
+        { icon: Grid, label: 'Projects', id: 'projects' },
+        { icon: MessageSquare, label: 'Testimonials', id: 'testimonials' },
+        { icon: Send, label: 'Contact', id: 'contact' },
     ];
+
+    const handleNavClick = (id) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+            onClose();
+        }
+    };
 
     return (
         <>
-            {/* Overlay */}
+            {/* Overlay - Very Light - Content Visible */}
             {isOpen && (
                 <div
-                    className="fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity"
+                    className="fixed inset-0 bg-transparent bg-opacity-10 z-40 transition-opacity"
                     onClick={onClose}
                 />
             )}
@@ -47,7 +55,8 @@ const NavigationSidebar = ({ isOpen, onClose }) => {
                             return (
                                 <button
                                     key={index}
-                                    className="w-full flex items-center gap-3 sm:gap-4 px-4 sm:px-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl text-neutral-400 hover:text-emerald-400 hover:bg-neutral-800 transition-all group text-sm sm:text-base"
+                                    onClick={() => handleNavClick(item.id)}
+                                    className="w-full flex items-center gap-3 sm:gap-4 px-4 sm:px-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl text-neutral-400 hover:text-emerald-400 hover:bg-neutral-800 transition-all group text-sm sm:text-base cursor-pointer"
                                 >
                                     <div className="w-9 sm:w-10 h-9 sm:h-10 rounded-full border border-neutral-700 flex items-center justify-center group-hover:border-emerald-400 transition-all flex-shrink-0">
                                         <Icon size={18} />

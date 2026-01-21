@@ -1,8 +1,14 @@
 @import "tailwindcss";
+@import "./theme-overrides.css";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary-color: #10b981;
+  --text-color: #e5e7eb;
+  --secondary-text-color: #a3a3a3;
+  --button-bg-color: #1f2937;
+  --accent-color: #10b981;
 }
 
 @theme inline {

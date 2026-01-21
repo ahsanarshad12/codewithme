@@ -1,0 +1,86 @@
+/* Theme Override Styles */
+
+/* Text Colors */
+.theme-text {
+    color: var(--text-color);
+}
+
+.theme-secondary-text {
+    color: var(--secondary-text-color);
+}
+
+.theme-accent-text {
+    color: var(--primary-color);
+}
+
+/* Button Styles */
+.theme-button {
+    background-color: var(--button-bg-color);
+    color: var(--text-color);
+}
+
+.theme-button:hover {
+    background-color: var(--primary-color);
+    color: #1a1a1a;
+}
+
+/* Border Styles */
+.theme-border-accent {
+    border-color: var(--primary-color);
+}
+
+/* Background Styles */
+.theme-bg-button {
+    background-color: var(--button-bg-color);
+}
+
+/* Hover Effects */
+.theme-hover-accent:hover {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* Special Overrides for Common Classes */
+.text-neutral-300 {
+    color: var(--text-color) !important;
+}
+
+.text-neutral-400,
+.text-neutral-500 {
+    color: var(--secondary-text-color) !important;
+}
+
+.bg-neutral-800,
+button {
+    background-color: var(--button-bg-color) !important;
+}
+
+.border-neutral-800 {
+    border-color: var(--button-bg-color) !important;
+}
+
+.hover\:text-emerald-400:hover,
+.hover\:text-emerald-500:hover {
+    color: var(--primary-color) !important;
+}
+
+.hover\:border-emerald-400:hover {
+    border-color: var(--primary-color) !important;
+}
+
+.text-emerald-400 {
+    color: var(--primary-color) !important;
+}
+
+.border-emerald-400 {
+    border-color: var(--primary-color) !important;
+}
+
+.bg-emerald-400 {
+    background-color: var(--primary-color) !important;
+}
+
+/* Smooth transitions */
+* {
+    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
