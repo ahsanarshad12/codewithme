@@ -33,7 +33,7 @@ const HeroSection = () => {
 
             <div className="flex flex-col lg:flex-row w-full">
                 {/* Left Side - Fixed Profile Card (30% width on desktop, full width on mobile) */}
-                <div className="fixed left-0 hidden lg:flex top-0 h-screen w-[30%] p-8 items-center justify-center">
+                <div className="fixed left-0 hidden lg:flex top-0  2xl:h-screen w-[30%] p-8 items-center justify-center">
                     <ProfileCard />
                 </div>
 
